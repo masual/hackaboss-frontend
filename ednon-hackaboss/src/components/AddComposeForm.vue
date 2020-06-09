@@ -24,6 +24,18 @@
             </v-row>
           </v-container>
         </v-card-text>
+        <v-alert
+          class="ma-2"
+          :value="alert"
+          color="deep-orange"
+          dark
+          text
+          border="top"
+          icon="mdi-fire"
+          transition="scale-transition"
+        >
+          {{alertText}}
+        </v-alert>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click.native="close">Close</v-btn>
@@ -39,6 +51,8 @@
   export default {
     name: "AddComposeForm",
     data: () => ({
+      alert: false,
+      alertText: '',
       compose: {
         data: null,
         yaml: null,
@@ -60,6 +74,8 @@
     },
     methods: {
       close () {
+        this.alert=false;
+        this.alertText='';
         this.$emit('update:dialog', false)
       },
       add () {
@@ -72,8 +88,12 @@
               data: null,
               yaml: null,
             }
+            this.alert=false;
           })
-        .catch(error => console.log(error))
+        .catch(error => {
+          this.alert=true;
+          this.alertText= JSON.stringify(error.response.data, undefined, 2);
+          console.log(error.response)})
         .finally( () => {
           this.$emit('setLoading', false);
           this.$emit('refresh');
@@ -85,8 +105,12 @@
           this.compose)
         .then(() => {
             this.$emit('update:dialog', false);
+            this.alert=false;
           })
-        .catch(error => console.log(error))
+        .catch(error => {
+          this.alert=true;
+          this.alertText= JSON.stringify(error.response.data, undefined, 2);
+          console.log(error.response)})
         .finally( () => {
           this.$emit('setLoading', false);
           this.$emit('refresh');

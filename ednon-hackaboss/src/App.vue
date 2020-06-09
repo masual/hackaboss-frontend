@@ -16,6 +16,24 @@
         </v-list-item>
         <AddComposeForm :dialog.sync="dialog" v-on:refresh="refresh" v-on:setLoading="setLoading"></AddComposeForm>
       </v-list>
+      <v-spacer></v-spacer>
+      <v-container fluid>
+        <v-col align="center"
+          justify="center">
+          <v-row align="center"
+          justify="center">
+            <a href="https://ednon.com/ednon-labs/">
+              <v-img src="@/assets/labs.png" width="75%"></v-img>
+            </a>
+          </v-row>
+          <v-row class="mt-5" align="center"
+          justify="center">
+            <a href="https://hackaboss.com/">
+              <v-img src="@/assets/hackaboss.png" width="100%"></v-img>
+            </a>
+           </v-row>
+        </v-col>
+      </v-container>
     </v-navigation-drawer>
 
     <v-app-bar
@@ -94,7 +112,6 @@
     },
     methods: {
       refresh () {
-        console.log(process.env.VUE_APP_BACKEND_URL+'compose/');
         axios
           .get(process.env.VUE_APP_BACKEND_URL+'compose/?format=json')
           .then(response => (this.compose_list = response.data))

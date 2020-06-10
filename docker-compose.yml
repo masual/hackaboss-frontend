@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+  backend:
+    container_name: hackboss_backend 
+    image: hackaboss_backend:0.0.1
+    environment:
+     DATABASE_NAME: ednonhackaboss
+     DATABASE_USER: ednonhackaboss
+     DATABASE_PASSWORD: maythe4thbewithyou
+     DATABASE_HOST: postgresql
+    networks:
+      - ednonlabs-network
+    depends_on:
+      - postgresql  
+    ports:
+      - "8081:8000"
+    restart: on-failure
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:9.6.18
+    environment:
+     POSTGRES_DB: ednonhackaboss
+     POSTGRES_USER: ednonhackaboss
+     POSTGRES_PASSWORD: maythe4thbewithyou
+    networks:
+      - ednonlabs-network
+    restart: on-failure
+
+networks:
+  ednonlabs-network:

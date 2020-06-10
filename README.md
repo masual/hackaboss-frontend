@@ -14,7 +14,7 @@ This repository was created with the aim of testing a **Frontend** application (
 - Build **Frontend**
 
 ```bash
-sudo docker build --build-arg GIT_TAG=0.0.1 -t hackaboss_frontend:0.0.1 -f image/Dockerfile .
+sudo docker build --build-arg GIT_TAG=0.0.1 -t hackaboss-frontend:0.0.1 -f image/Dockerfile .
 ```
 
 :eyes: Before running **Frontend** application, it is necessary to run **Backend** application and  a **Database**. More information on [hackaboss_backend](https://github.com/masual/hackaboss_backend).

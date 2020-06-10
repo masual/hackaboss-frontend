@@ -22,9 +22,8 @@ sudo docker build --build-arg GIT_TAG=0.0.1 -t hackaboss_frontend:0.0.1 -f image
 * Run **Frontend**
 
 ```bash
-sudo docker container run -d --name hackaboss_frontend \
+sudo docker container run -d --name hackaboss-frontend \
  -p 8080:80 \
  --network ednonlabs-network \
-hackaboss_frontend:0.0.1
+hackaboss-frontend:0.0.1
 ```
-

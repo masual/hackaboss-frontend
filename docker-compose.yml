@@ -3,8 +3,8 @@ version: "3"
 services:
 
   backend:
-    container_name: hackboss_backend 
-    image: hackaboss_backend:0.0.1
+    container_name: hackboss-backend 
+    image: hackaboss-backend:0.0.1
     environment:
      DATABASE_NAME: ednonhackaboss
      DATABASE_USER: ednonhackaboss

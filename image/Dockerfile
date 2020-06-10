@@ -32,6 +32,9 @@ RUN yarn run build
 # We use NGINX 
 FROM nginx:stable-alpine
 
+# We add a custom configuration
+COPY image/nginx-config/default.conf /etc/nginx/conf.d/default.conf
+
 # Copy our application from build-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 

@@ -1,0 +1,1 @@
+Mount default.conf in /etc/nginx/conf.d/

@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+
+  frontend:
+    container_name: hackaboss-frontend
+    image: hackaboss-frontend:${env.GIT_TAG}
+    networks:
+      - ednonlabs-network
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: on-failure

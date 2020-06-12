@@ -15,27 +15,27 @@ EXPOSE 80
 # Set the current working directory inside the container
 WORKDIR /app
 
-# Copy several files to /app
+# We copy the dependency specification and install them first 
+# in order to speed up the building of the image when changes
+# are made to the actual code, that is copied on the next step
 COPY ednon-hackaboss/package*.json ./
 COPY ednon-hackaboss/yarn* ./
 COPY ednon-hackaboss/babel.config.js ./
-
-# We install Yarn
 RUN yarn install
 
 # Copy our application 
 COPY ednon-hackaboss /app
 
-# Build
+# Build for production with Yarn
 RUN yarn run build
 
-# We use NGINX 
+# We use NGINX to serve the application
 FROM nginx:stable-alpine
 
 # We add a custom configuration
 COPY image/nginx-config/default.conf /etc/nginx/conf.d/default.conf
 
-# Copy our application from build-stage
+# Copy our compiled application from build-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Run NGINX

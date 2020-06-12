@@ -112,18 +112,12 @@ pipeline {
             }
         }
 
-        stage('Stop the frontend service') {
+        stage('Restart service') {
             steps {
-                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'jenkins/docker-compose.yml', option: [$class: 'StartService', scale: 1, service: 'frontend'], useCustomDockerComposeFile: true])
+                sh 'docker-compose -f jenkins/docker-compose.yml rm -fsv frontend'
+                sh 'docker-compose -f jenkins/docker-compose.yml up -d frontend'
             }
-        }
-
-        stage('Start the frontend service') {
-            steps {
-                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'jenkins/docker-compose.yml', option: [$class: 'StopService', service: 'frontend'], useCustomDockerComposeFile: true])
-            }
-        }
-
+        }       
     }
 
     post {

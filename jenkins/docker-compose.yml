@@ -4,7 +4,7 @@ services:
 
   frontend:
     container_name: hackaboss-frontend
-    image: ednonlabs.azurecr.io/ednonlabs/hackaboss-frontend:${env.GIT_TAG}
+    image: ednonlabs.azurecr.io/ednonlabs/hackaboss-frontend:${GIT_TAG}
     networks:
       - ednonlabs-network
     ports:

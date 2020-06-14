@@ -85,7 +85,7 @@
     </v-content>
 
     <v-footer app>
-      <span>&copy; 2020</span>
+      <span>&copy; 2020 Ednon | v - {{ version }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -101,6 +101,7 @@
     },
 
     data: () => ({
+      version: process.env.VUE_APP_VERSION,
       loading: false,
       drawer: null,
       dialog: false,

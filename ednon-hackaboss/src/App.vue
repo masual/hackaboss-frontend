@@ -20,18 +20,18 @@
       <v-container fluid>
         <v-col align="center"
           justify="center">
-          <v-row align="center"
-          justify="center">
-            <a href="https://ednon.com/ednon-labs/">
-              <v-img src="@/assets/labs.png" width="75%"></v-img>
-            </a>
-          </v-row>
           <v-row class="mt-5" align="center"
           justify="center">
             <a href="https://hackaboss.com/">
               <v-img src="@/assets/hackaboss.png" width="100%"></v-img>
             </a>
            </v-row>
+          <v-row align="center"
+          justify="center">
+            <a href="https://ednon.com/ednon-labs/">
+              <v-img src="@/assets/labs.png" width="75%"></v-img>
+            </a>
+          </v-row>
         </v-col>
       </v-container>
     </v-navigation-drawer>
